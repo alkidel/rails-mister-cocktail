@@ -1,0 +1,17 @@
+<div class="container text-center">
+<h1>Add a new dose to your cocktail!</h1>
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <%= f.input :description %>
+  <%= f.association :ingredient, prompt: 'Select an ingredient' %>
+  <%= f.button :submit, class: "btn btn-success" %>
+
+  <% end %>
+
+  <div class="text-center"><h2>
+    <%= link_to "Back to list of cocktails", cocktails_path, class: "btn btn-primary" %></h2>
+  </div>
+
+</div>
+
+

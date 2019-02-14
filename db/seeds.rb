@@ -8,7 +8,13 @@
 require 'open-uri'
 require 'json'
 
-url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
+puts 'Cleaning database...'
+Ingredient.destroy_all
 
+url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
 ingredient_serialized = open(url).read
-ingredient = JSON.parse(user_serialized)
+ingredient = JSON.parse(ingredient_serialized)
+
+ingredient["drinks"].each do |hash|
+  Ingredient.create(name: hash["strIngredient1"])
+end
